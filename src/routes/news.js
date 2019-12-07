@@ -1,11 +1,40 @@
 const express = require('express');
-var router = express.Router();
+let router = express.Router();
+const News = require('../models/news');
 
+/*
 
-
+  CreateReadUpdateDelete
+  CRUD
+*/
+router.get('/all' , function(req , res){
+  News.find({title : 'First'}).exec((err , news) => {
+    return res.json({news});
+  });
+})
 
 router.get('/new', function (req, res) {
-  res.json({success : 'news -> new'});
+  // let news = new News();
+  //     news.title = 'First';
+  //     news.desc = 'FIrst Desc';
+  //     news.created = new Date();
+  //     news.save((err , nNew)=>{
+  //       if(err){return res.json({err})}
+  //       return res.json({success : nNew});
+  //     })
+    // News.insertOne()
+    // News.insert()
+   
+    // {
+    //   title : 'sssss',
+    //   body : 'sssss',
+    //   desc : 'sssss',
+    // }
+    // req.body.title
+    News.insertMany([{title:'oBJECT TITLE' , desc : 'Desc Obj'}] , (err , nNew)=>{
+        if(err){return res.json({err})}
+        return res.json({success : nNew});
+    })
 })
 
 router.get('/update/:id', function (req, res) {
