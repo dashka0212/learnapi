@@ -7,9 +7,14 @@ const News = require('../models/news');
   CreateReadUpdateDelete
   CRUD
 */
+router.get('/single/:id' , function(req , res){
+  News.find({_id : req.params.id}).exec((err , news) => {
+    return res.json({medee : news});
+  });
+});
 router.get('/all' , function(req , res){
-  News.find({title : 'First'}).exec((err , news) => {
-    return res.json({news});
+  News.find({}).exec((err , news) => {
+    return res.json({medee : news});
   });
 })
 
