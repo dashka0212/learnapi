@@ -8,7 +8,6 @@ router.post('/add', function (req, res) {
         if(err){return res.json({err})}
         return res.json({text: newText})
     })
-  
 })
 
 module.exports = router;
